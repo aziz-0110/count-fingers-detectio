@@ -23,5 +23,5 @@ pip install -r requitments.txt
 ```
 4. Run the app
 ```shell
-python3 controler.py 
+python3 controller.py 
 ```
