@@ -64,7 +64,7 @@ def main():
     view = View()
     Controller(model, view)
     
-    view.setWindowTitle('Hands Detection')
+    view.setWindowTitle('Telkom University | IEEE System Engineering')
     view.resize(800, 720)
     view.show()
 
