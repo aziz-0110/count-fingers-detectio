@@ -3,6 +3,7 @@ from PyQt5 import QtCore
 from view import View
 from model import Model
 
+
 class Controller(QWidget):
     def __init__(self, model, view):
         super().__init__()
@@ -13,17 +14,17 @@ class Controller(QWidget):
         self.setsylesheet()
 
     def setsylesheet(self):
-        self.view.frame.hide()
-        self.view.frame_3.setMaximumSize(QtCore.QSize(16777215, 80))
+        # self.view.frame.hide()
+        self.view.radioButton_3.hide()
+        # self.view.frame_3.setMaximumSize(QtCore.QSize(16777215, 80))
 
-
-        self.view.pushButton_4.clicked.connect(lambda: self.stop())
+        self.view.pushButton_2.clicked.connect(lambda: self.stop())
 
         radioButton = [self.view.radioButton, self.view.radioButton_2, self.view.radioButton_3, self.view.radioButton_4]
         for radio in radioButton:
             radio.clicked.connect(self.check_radioButton)
 
-        self.view.pushButton_7.clicked.connect(lambda: self.load())
+        self.view.pushButton.clicked.connect(lambda: self.load())
 
     def load(self):
         import cv2
@@ -49,13 +50,14 @@ class Controller(QWidget):
 
     def check_radioButton(self):
         radioButton = {
-            self.view.radioButton_2: '+',
-            self.view.radioButton_3: '-',
-            self.view.radioButton_4: 'x',
-            self.view.radioButton: ':',
+            self.view.radioButton_4: '+',
+            self.view.radioButton_2: '-',
+            self.view.radioButton: 'x',
+            self.view.radioButton_3: ':',
         }
 
         self.tanda = next((action for radio, action in radioButton.items() if radio.isChecked()), 'tidak ada')
+
 
 def main():
     import sys
@@ -63,12 +65,13 @@ def main():
     model = Model()
     view = View()
     Controller(model, view)
-    
+
     view.setWindowTitle('Telkom University | IEEE System Engineering')
     view.resize(800, 720)
     view.show()
 
     sys.exit(app.exec_())
+
 
 if __name__ == '__main__':
     main()
